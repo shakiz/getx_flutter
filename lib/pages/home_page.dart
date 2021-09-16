@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
+import 'package:getx_flutter/controllers/product_controller.dart';
+import 'package:getx_flutter/pages/item_tile.dart';
 
 class HomePage extends StatelessWidget {
+  final ProductController productController = Get.put(ProductController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home Page"),
+        title: const Text("Home Page"),
         elevation: 0,
-        leading: Icon(
+        leading: const Icon(
           Icons.arrow_back_ios,
         ),
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.shopping_cart,
             ),
             onPressed: () {},
@@ -48,22 +52,20 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: StaggeredGridView.countBuilder(
-              crossAxisCount: 2,
-              itemCount: 100,
-              itemBuilder: (context, index) => Container(
-                color: Colors.blueGrey,
-                margin: const EdgeInsets.only(
-                    left: 16, right: 16, top: 16, bottom: 16),
-                height: 100,
-                width: 200,
-                child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.0),
-                        shape: BoxShape.rectangle)),
-              ),
-              staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
-            ),
+            child: Obx(() {
+              if (productController.isLoading.value) {
+                return const Center(child: CircularProgressIndicator());
+              } else {
+                return StaggeredGridView.countBuilder(
+                  crossAxisCount: 2,
+                  itemCount: productController.productList.length,
+                  itemBuilder: (context, index) {
+                    return ItemTile(productController.productList[index]);
+                  },
+                  staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
+                );
+              }
+            }),
           )
         ],
       ),
