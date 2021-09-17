@@ -1,9 +1,11 @@
+import 'package:blinking_text/blinking_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_flutter/models/product.dart';
 
 class ItemTile extends StatelessWidget {
   final Product product;
+
   const ItemTile(this.product);
 
   @override
@@ -38,16 +40,16 @@ class ItemTile extends StatelessWidget {
                 Positioned(
                   right: 0,
                   child: Obx(() => CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: IconButton(
-                      icon: product.isFavorite.value
-                          ? const Icon(Icons.favorite_rounded)
-                          : const Icon(Icons.favorite_border),
-                      onPressed: () {
-                        product.isFavorite.toggle();
-                      },
-                    ),
-                  )),
+                        backgroundColor: Colors.white,
+                        child: IconButton(
+                          icon: product.isFavorite.value
+                              ? const Icon(Icons.favorite_rounded)
+                              : const Icon(Icons.favorite_border),
+                          onPressed: () {
+                            product.isFavorite.toggle();
+                          },
+                        ),
+                      )),
                 )
               ],
             ),
@@ -55,8 +57,10 @@ class ItemTile extends StatelessWidget {
             Text(
               product.name,
               maxLines: 2,
-              style:
-              const TextStyle(fontFamily: 'avenir', fontWeight: FontWeight.w800, fontSize: 16),
+              style: const TextStyle(
+                  fontFamily: 'avenir',
+                  fontWeight: FontWeight.w800,
+                  fontSize: 16),
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 8),
@@ -83,8 +87,20 @@ class ItemTile extends StatelessWidget {
                 ),
               ),
             const SizedBox(height: 8),
-            Text('\$${product.price}',
-                style: const TextStyle(fontSize: 20, fontFamily: 'avenir')),
+            Container(
+              child: Text('Price\$${product.price}',
+                  style:
+                  const TextStyle(fontSize: 16, fontFamily: 'avenir')),
+            ),
+            Container(
+              child: BlinkText('Discount Price \$${product.price}',
+                  duration: Duration(seconds: 1),
+                  beginColor: Colors.black,
+                  endColor: Colors.orange,
+                  style:
+                  const TextStyle(fontSize: 16, fontFamily: 'avenir')),
+            ),
+            const SizedBox(height: 8),
           ],
         ),
       ),
