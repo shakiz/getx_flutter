@@ -2,7 +2,7 @@ import 'package:getx_flutter/models/product.dart';
 import 'package:http/http.dart' as http;
 
 class RemoteServices {
-  //make sure you always use ststic client
+  //make sure you always use static client
   static var client = http.Client();
 
   //region fetch product

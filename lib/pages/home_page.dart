@@ -3,6 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:getx_flutter/controllers/product_controller.dart';
 import 'package:getx_flutter/pages/item_tile.dart';
+import 'package:getx_flutter/utils/tools.dart';
 
 class HomePage extends StatelessWidget {
   final ProductController productController = Get.put(ProductController());
@@ -21,7 +22,9 @@ class HomePage extends StatelessWidget {
             icon: const Icon(
               Icons.shopping_cart,
             ),
-            onPressed: () {},
+            onPressed: () {
+
+            },
           )
         ],
       ),
