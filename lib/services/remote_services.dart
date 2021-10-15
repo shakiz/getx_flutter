@@ -1,4 +1,5 @@
 import 'package:getx_flutter/models/product.dart';
+import 'package:getx_flutter/utils/tools.dart';
 import 'package:http/http.dart' as http;
 
 class RemoteServices {
@@ -13,9 +14,9 @@ class RemoteServices {
       var jsonString = response.body;
       return productFromJson(jsonString);
     } else {
-
+      Tools.showSnackBar("Error", "Error while fetching data from server");
       return null;
     }
   }
-  //endref=gion
+  //endregion
 }

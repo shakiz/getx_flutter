@@ -11,64 +11,76 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Home Page"),
+        backgroundColor: Colors.transparent,
+        title: const Text(
+          "ShopX",
+          style: TextStyle(
+              fontFamily: 'avenir',
+              fontSize: 20,
+              color: Colors.black,
+              fontWeight: FontWeight.w900),
+        ),
         elevation: 0,
-        leading: const Icon(
-          Icons.arrow_back_ios,
+        leading: InkWell(
+          child: const IconTheme(
+              data: IconThemeData(color: Colors.black),
+              child: Icon(
+                Icons.menu,
+              )),
+          onTap: () {},
         ),
         actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.shopping_cart,
+          InkWell(
+            child: Container(
+              margin: const EdgeInsets.only(right: 8),
+              child: const IconTheme(
+                  data: IconThemeData(color: Colors.black),
+                  child: Icon(
+                    Icons.shopping_cart,
+                  )),
             ),
-            onPressed: () {
-
-            },
-          )
+            onTap: () {},
+          ),
         ],
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                const Expanded(
-                  child: Text(
-                    'ShopX',
-                    style: TextStyle(
-                        fontFamily: 'avenir',
-                        fontSize: 24,
-                        fontWeight: FontWeight.w900),
-                  ),
-                ),
-                IconButton(
-                    iconSize: 24,
-                    icon: const Icon(Icons.view_list_rounded),
-                    onPressed: () {}),
-                IconButton(
-                    iconSize: 20,
-                    icon: const Icon(Icons.grid_view),
-                    onPressed: () {}),
-              ],
-            ),
+          const SizedBox(
+            height: 8,
+          ),
+          const Padding(
+            padding: EdgeInsets.all(4),
+            child: Text("Select Your Favorites Product",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontFamily: 'avenir',
+                    fontSize: 32,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600)),
+          ),
+          const SizedBox(
+            height: 8,
           ),
           Expanded(
-            child: Obx(() {
-              if (productController.isLoading.value) {
-                return const Center(child: CircularProgressIndicator());
-              } else {
-                return StaggeredGridView.countBuilder(
-                  crossAxisCount: 2,
-                  itemCount: productController.productList.length,
-                  itemBuilder: (context, index) {
-                    return ItemTile(productController.productList[index]);
-                  },
-                  staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
-                );
-              }
-            }),
+            child: Container(
+              margin: const EdgeInsets.only(left: 8, right: 8),
+              child: Obx(() {
+                if (productController.isLoading.value) {
+                  return const Center(child: CircularProgressIndicator());
+                } else {
+                  return StaggeredGridView.countBuilder(
+                    crossAxisCount: 2,
+                    itemCount: productController.productList.length,
+                    itemBuilder: (context, index) {
+                      return ItemTile(productController.productList[index]);
+                    },
+                    staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
+                  );
+                }
+              }),
+            ),
           )
         ],
       ),

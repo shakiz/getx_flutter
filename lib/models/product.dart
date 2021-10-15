@@ -11,6 +11,7 @@ class Product {
   Product({
     required this.id,
     required this.name,
+    required this.brand,
     required this.price,
     this.priceSign,
     this.currency,
@@ -30,6 +31,7 @@ class Product {
 
   int id;
   String name;
+  String brand;
   String price;
   dynamic priceSign;
   dynamic currency;
@@ -51,6 +53,7 @@ class Product {
   factory Product.fromJson(Map<String, dynamic> json) => Product(
     id: json["id"],
     name: json["name"],
+    brand: json["brand"],
     price: json["price"],
     priceSign: json["price_sign"],
     currency: json["currency"],
@@ -71,6 +74,7 @@ class Product {
   Map<String, dynamic> toJson() => {
     "id": id,
     "name": name,
+    "brand": brand,
     "price": price,
     "price_sign": priceSign,
     "currency": currency,

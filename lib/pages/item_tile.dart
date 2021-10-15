@@ -101,7 +101,7 @@ class ItemTile extends StatelessWidget {
                 ),
               const SizedBox(height: 8),
               Container(
-                child: Text('Price\$${product.price}',
+                child: Text('Price\$${product.price.toString()}',
                     style:
                     const TextStyle(fontSize: 16, fontFamily: 'avenir')),
               ),
