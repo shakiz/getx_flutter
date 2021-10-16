@@ -174,7 +174,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          "Brand Name: " + Tools.firstLetterOfStringCap(product.brand ?? "Not Found"),
+                          "Brand Name: " + Tools.firstLetterOfStringCap(product.brand),
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                             color: Colors.black45,
@@ -188,7 +188,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          "Category: " + Tools.firstLetterOfStringCap(product.productType ?? "Not Found"),
+                          "Category: " + Tools.firstLetterOfStringCap(product.productType),
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                             color: Colors.black45,

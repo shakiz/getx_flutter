@@ -79,11 +79,11 @@ class ItemTile extends StatelessWidget {
               const SizedBox(height: 8),
               if (product.rating != null)
                 Container(
+                  padding: const EdgeInsets.only(top:4, bottom: 4, left: 8, right: 8),
                   decoration: BoxDecoration(
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -103,15 +103,15 @@ class ItemTile extends StatelessWidget {
               Container(
                 child: Text('Price\$${product.price.toString()}',
                     style:
-                    const TextStyle(fontSize: 16, fontFamily: 'avenir')),
+                    const TextStyle(fontSize: 12, fontFamily: 'avenir')),
               ),
               Container(
                 child: BlinkText('Discount Price \$${product.price}',
-                    duration: Duration(seconds: 1),
+                    duration: const Duration(seconds: 1),
                     beginColor: Colors.black,
                     endColor: Colors.orange,
                     style:
-                    const TextStyle(fontSize: 16, fontFamily: 'avenir')),
+                    const TextStyle(fontSize: 14, fontFamily: 'avenir')),
               ),
               const SizedBox(height: 8),
             ],
