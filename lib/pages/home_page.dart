@@ -3,8 +3,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:getx_flutter/controllers/product_controller.dart';
 import 'package:getx_flutter/models/product.dart';
+import 'package:getx_flutter/pages/cart_page.dart';
 import 'package:getx_flutter/pages/item_tile.dart';
-import 'package:getx_flutter/utils/tools.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,20 +20,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     FocusScope.of(context).requestFocus(FocusNode());
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     inputController.dispose();
   }
@@ -58,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(fontSize: 24.0),
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.black87,
+                  color: Colors.black54,
                 ),
               ),
               ListTile(
@@ -109,14 +106,16 @@ class _HomePageState extends State<HomePage> {
         actions: [
           InkWell(
             child: Container(
-              margin: const EdgeInsets.only(right: 8),
+              margin: const EdgeInsets.only(right: 8, left: 8),
               child: const IconTheme(
                   data: IconThemeData(color: Colors.black),
                   child: Icon(
                     Icons.shopping_cart,
                   )),
             ),
-            onTap: () {},
+            onTap: () {
+              Get.to(CartPage());
+            },
           ),
         ],
       ),

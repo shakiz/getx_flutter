@@ -218,7 +218,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         alignment: Alignment.bottomCenter,
                         child: ElevatedButton(
                           onPressed: () {
-                            Tools.showSnackBarWithButton("Added to cart", "${product.name} has been added to cart",CartPage(product));
+                            Tools.showSnackBarWithButton("Added to cart", "${product.name} has been added to cart",CartPage());
                           },
                           child: const Text('Add To Cart'),
                           style: ElevatedButton.styleFrom(
