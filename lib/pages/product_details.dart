@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
 import 'package:getx_flutter/models/product.dart';
+import 'package:getx_flutter/pages/cart_page.dart';
 import 'package:getx_flutter/pages/home_page.dart';
 import 'package:getx_flutter/utils/tools.dart';
 
@@ -216,7 +217,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Tools.showSnackBarWithButton("Added to cart", "${product.name} has been added to cart",CartPage(product));
+                          },
                           child: const Text('Add To Cart'),
                           style: ElevatedButton.styleFrom(
                               primary: Colors.pink,
